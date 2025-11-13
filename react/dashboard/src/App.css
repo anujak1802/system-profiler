@@ -1,0 +1,71 @@
+/* Make the page fill the viewport */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Nice soft background (replace with an image if you prefer) */
+body {
+  background:
+    radial-gradient(1200px 600px at 20% -10%, #7aa9ff33, transparent 60%),
+    radial-gradient(1000px 500px at 110% 10%, #ff9ad933, transparent 60%),
+    linear-gradient(135deg, #0f1220, #161a2e 60%, #1a2038);
+  background-attachment: fixed;
+  color: #e8eaf6;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Full-screen blur layer (blurs whatever is behind it) */
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(8px) saturate(115%);
+  -webkit-backdrop-filter: blur(8px) saturate(115%);
+  pointer-events: none; /* don't block clicks */
+  z-index: 0;
+}
+
+/* Center the content */
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;     /* vertical center */
+  justify-content: center; /* horizontal center */
+  padding: 2rem;
+  position: relative;
+  z-index: 1; /* above the blur layer */
+}
+
+/* Glass card that holds the chart */
+.glass-card {
+  width: min(92vw, 960px);
+  padding: 1.5rem 1.75rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Title styling */
+.title {
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #eef2ff;
+}
+
+/* Make Recharts responsive container behave nicely */
+.chart-wrap {
+  width: 100%;
+  height: 360px; /* adjust to taste */
+}
+
+/* Tooltip text contrast fix (Recharts injects its own DOM) */
+.recharts-default-tooltip {
+  background: rgba(20, 24, 40, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #e8eaf6 !important;
+  border-radius: 10px !important;
+}
